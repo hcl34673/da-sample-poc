@@ -1,0 +1,356 @@
+.billboard-hero {
+    /* Layout */
+    --bh-min-height-mobile: 667px;
+    --bh-min-height-tablet: 432px;
+    --bh-min-height-desktop: 617px;
+    --bh-aspect-ratio-mobile: 16 / 9;
+    --bh-aspect-ratio-tablet: 16 / 9;
+    --bh-aspect-ratio-desktop: 21 / 9;
+
+    /* Font families */
+    --bh-font-family-heading: georgia, 'Times New Roman', serif;
+    --bh-font-family-body: inherit;
+
+    /* Font sizes (px) */
+    --bh-font-size-title-mobile: 44px;
+    --bh-font-size-title-tablet: 48px;
+    --bh-font-size-title-desktop: 72px;
+    --bh-font-size-desc-mobile: 18px;
+    --bh-font-size-desc-tablet: 20px;
+    --bh-font-size-desc-desktop: 20px;
+    --bh-font-size-cta-mobile: 16px;
+    --bh-font-size-cta-tablet: 16px;
+    --bh-font-size-cta-desktop: 16px;
+
+    /* Font weights and metrics */
+    --bh-font-weight-title: 600;
+    --bh-font-weight-cta: 600;
+    --bh-line-height-title-mobile: 53px;
+    --bh-line-height-title-tablet: 58px;
+    --bh-line-height-title-desktop: 80px;
+    --bh-line-height-desc: 28px;
+    --bh-letter-spacing-title: -1px;
+    --bh-letter-spacing-cta: 0.01em;
+
+    /* Colors: text */
+    --bh-color-text-dark: #1a1a1a;
+    --bh-color-text-light: #fff;
+
+    /* Colors: description */
+    --bh-desc-opacity: 0.85;
+
+    /* Colors: CTA button */
+    --bh-cta-bg: #cbff74;
+    --bh-cta-bg-hover: #cbff74;
+    --bh-cta-color: #1b1b1b;
+    --bh-cta-radius: 2px;
+
+    /* Colors: pause button */
+    --bh-pause-bg: rgb(0 0 0 / 35%);
+    --bh-pause-bg-hover: rgb(0 0 0 / 60%);
+    --bh-pause-color: #fff;
+
+    /* Colors: overlay */
+    --bh-overlay-light: rgb(255 255 255 / 15%);
+    --bh-overlay-dark: rgb(0 0 0 / 15%);
+
+    /* Transitions */
+    --bh-transition-cta: background-color 0.2s ease, transform 0.15s ease;
+    --bh-transition-arrow: transform 0.2s ease;
+    --bh-transition-pause: background 0.2s ease;
+
+    /* Focus rings */
+    --bh-focus-ring-cta: 3px solid #1a1a1a;
+    --bh-focus-ring-pause: 3px solid #fff;
+    
+    /* Block base — mobile first */
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    min-height: var(--bh-min-height-mobile);
+    aspect-ratio: var(--bh-aspect-ratio-mobile);
+}
+
+/* Container reset — full-bleed */
+.section.billboard-hero-container>div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+}
+
+@media (width >=768px) {
+    .billboard-hero {
+        min-height: var(--bh-min-height-tablet);
+        aspect-ratio: var(--bh-aspect-ratio-tablet);
+    }
+}
+
+@media (width >=1024px) {
+    .billboard-hero {
+        aspect-ratio: var(--bh-aspect-ratio-desktop);
+        min-height: var(--bh-min-height-desktop);
+    }
+}
+
+/* Background layer */
+.billboard-hero .bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Background image */
+.billboard-hero .bg-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.billboard-hero .bg-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Background video */
+.billboard-hero .bg-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* Overlay */
+.billboard-hero .overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: radial-gradient(ellipse 70% 90% at 0% 100%, var(--bh-overlay-light) 0%, transparent 70%);
+}
+
+.billboard-hero.dark .overlay {
+    background: radial-gradient(ellipse 70% 90% at 0% 100%, var(--bh-overlay-dark) 0%, transparent 70%);
+}
+
+/* Content wrapper — mobile first */
+.billboard-hero .content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 0 20px 88px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media (width >=768px) {
+    .billboard-hero .content {
+        padding: 36px 40px;
+        margin: 0 auto;
+    }
+}
+
+@media (width >=1024px) {
+    .billboard-hero .content {
+        padding: 0 0 56px;
+        max-width: 1212px;
+        margin: 0 auto;
+    }
+}
+
+/* Headline — mobile first */
+.billboard-hero .hero-title {
+    margin: 0;
+    font-family: var(--bh-font-family-heading);
+    font-size: var(--bh-font-size-title-mobile);
+    font-weight: var(--bh-font-weight-title);
+    line-height: var(--bh-line-height-title-mobile);
+    letter-spacing: var(--bh-letter-spacing-title);
+    color: var(--bh-color-text-dark);
+}
+
+@media (width >=768px) {
+    .billboard-hero .hero-title {
+        font-size: var(--bh-font-size-title-tablet);
+        line-height: var(--bh-line-height-title-tablet);
+    }
+}
+
+@media (width >=1024px) {
+    .billboard-hero .hero-title {
+        font-size: var(--bh-font-size-title-desktop);
+        line-height: var(--bh-line-height-title-desktop);
+    }
+}
+
+.billboard-hero.dark .hero-title {
+    color: var(--bh-color-text-light);
+}
+
+.billboard-hero.light .hero-title {
+    color: var(--bh-color-text-dark);
+}
+
+/* Description — mobile first */
+.billboard-hero .hero-description {
+    margin: 0;
+    padding-top: 12px;
+    font-family: var(--bh-font-family-body);
+    font-size: var(--bh-font-size-desc-mobile);
+    line-height: var(--bh-line-height-desc);
+    color: var(--bh-color-text-dark);
+    opacity: var(--bh-desc-opacity);
+}
+
+.billboard-hero .hero-description p {
+    margin: 0;
+    padding: 0;
+}
+
+@media (width >=768px) {
+    .billboard-hero .hero-description {
+        font-size: var(--bh-font-size-desc-tablet);
+        max-width: 480px;
+    }
+}
+
+@media (width >=1024px) {
+    .billboard-hero .hero-description {
+        font-size: var(--bh-font-size-desc-desktop);
+        max-width: 520px;
+    }
+}
+
+.billboard-hero.dark .hero-description {
+    color: var(--bh-color-text-light);
+}
+
+.billboard-hero.light .hero-description {
+    color: var(--bh-color-text-dark);
+}
+
+/* CTA button — mobile first */
+.billboard-hero .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    margin-top: 32px;
+    border: none;
+    border-radius: var(--bh-cta-radius);
+    font-family: var(--bh-font-family-body);
+    font-size: var(--bh-font-size-cta-mobile);
+    font-weight: var(--bh-font-weight-cta);
+    letter-spacing: var(--bh-letter-spacing-cta);
+    text-decoration: none;
+    cursor: pointer;
+    white-space: nowrap;
+    background-color: var(--bh-cta-bg);
+    color: var(--bh-cta-color);
+    transition: var(--bh-transition-cta);
+}
+
+@media (width >=768px) {
+    .billboard-hero .hero-cta {
+        padding: 13px 26px;
+        font-size: var(--bh-font-size-cta-tablet);
+        gap: 10px;
+    }
+}
+
+@media (width >=1024px) {
+    .billboard-hero .hero-cta {
+        padding: 13px 28px;
+        font-size: var(--bh-font-size-cta-desktop);
+    }
+}
+
+.billboard-hero .hero-cta:hover,
+.billboard-hero .hero-cta:focus-visible {
+    background-color: var(--bh-cta-bg-hover);
+}
+
+.billboard-hero .hero-cta:active {
+    transform: translateY(0);
+}
+
+.billboard-hero .hero-cta:focus-visible {
+    outline: var(--bh-focus-ring-cta);
+    outline-offset: 3px;
+}
+
+.billboard-hero .cta-icon {
+    display: inline-flex;
+    align-items: center;
+    transition: var(--bh-transition-arrow);
+}
+
+.billboard-hero .cta-icon img {
+    display: block;
+}
+
+.billboard-hero .hero-cta:hover .cta-icon {
+    transform: translateX(4px);
+}
+
+/* Pause/play button — mobile first */
+.billboard-hero .pause-btn {
+    position: absolute;
+    bottom: 52px;
+    right: 16px;
+    z-index: 3;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--bh-transition-pause);
+}
+
+@media (width >=768px) {
+    .billboard-hero .pause-btn {
+        bottom: 52px;
+        right: 20px;
+    }
+}
+
+@media (width >=1024px) {
+    .billboard-hero .pause-btn {
+        bottom: 60px;
+        right: 24px;
+    }
+}
+
+.billboard-hero .pause-btn:focus-visible {
+    outline: var(--bh-focus-ring-pause);
+    outline-offset: 2px;
+}
+
+.billboard-hero .pause-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.billboard-hero .pause-icon img {
+    display: block;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .billboard-hero .hero-cta,
+    .billboard-hero .cta-icon {
+        transition: none;
+    }
+}
